@@ -1,4 +1,18 @@
+import 'package:flutter/material.dart';
 
+enum MessageColor{
+  red(Colors.red),
+  orange(Colors.orange),
+  yellow(Colors.yellow),
+  green(Colors.green),
+  blue(Colors.blue),
+  pink(Colors.pink),
+  purple(Colors.purple);
+
+  const MessageColor(this.rgbcolor);
+    final Color rgbcolor;
+  }
+  
 
 
 class GuestBookMessage {
