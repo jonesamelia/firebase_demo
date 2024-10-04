@@ -74,6 +74,7 @@ class ApplicationState extends ChangeNotifier {
               GuestBookMessage(
                 name: document.data()['name'] as String,
                 message: document.data()['text'] as String,
+                color: document.data()['color'] as String,
               ),
             );
           }
@@ -117,6 +118,7 @@ class ApplicationState extends ChangeNotifier {
       'timestamp': DateTime.now().millisecondsSinceEpoch,
       'name': FirebaseAuth.instance.currentUser!.displayName,
       'userId': FirebaseAuth.instance.currentUser!.uid,
+      'color': Colors.purple.value.toString(),
     });
   }
 }

@@ -71,7 +71,7 @@ class _GuestBookState extends State<GuestBook> {
         ),
         const SizedBox(height: 8),
         for (var message in widget.messages)
-          Paragraph('${message.name}: ${message.message}'),
+          Text('${message.name}: ${message.message}', style: TextStyle(color: Color(int.parse(message.color)))),
         const SizedBox(height: 8),
       ],
     );
