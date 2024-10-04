@@ -12,7 +12,7 @@ class GuestBook extends StatefulWidget {
     required this.messages,
   });
 
-  final FutureOr<void> Function(String message) addMessage;
+  final FutureOr<void> Function(String message, Color c) addMessage;
   final List<GuestBookMessage> messages; // new
 
   @override
@@ -22,6 +22,7 @@ class GuestBook extends StatefulWidget {
 class _GuestBookState extends State<GuestBook> {
   final _formKey = GlobalKey<FormState>(debugLabel: '_GuestBookState');
   final _controller = TextEditingController();
+  MessageColor messageColor =  MessageColor.black;
 
   @override
    Widget build(BuildContext context) {
@@ -35,6 +36,17 @@ class _GuestBookState extends State<GuestBook> {
             key: _formKey,
             child: Row(
               children: [
+                DropdownButton<MessageColor>(
+                  value: messageColor,
+                  onChanged: (MessageColor? newValue){
+                    setState(() {
+                      messageColor = newValue!;
+                    });
+                  },
+                  items: MessageColor.values.map((MessageColor classType){
+                    return DropdownMenuItem<MessageColor>(
+                      value: classType, child: Text(classType.name));
+                  }).toList()),
                 Expanded(
                   child: TextFormField(
                     controller: _controller,
@@ -53,7 +65,7 @@ class _GuestBookState extends State<GuestBook> {
                 StyledButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      await widget.addMessage(_controller.text);
+                      await widget.addMessage(_controller.text, messageColor.rgbcolor);
                       _controller.clear();
                     }
                   },

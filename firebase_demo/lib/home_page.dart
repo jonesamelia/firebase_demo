@@ -62,8 +62,8 @@ Consumer<ApplicationState>(
         ),
         const Header('Discussion'),
         GuestBook(
-          addMessage: (message) =>
-              appState.addMessageToGuestBook(message),
+          addMessage: (message, co) =>
+              appState.addMessageToGuestBook(message, co),
           messages: appState.guestBookMessages, // new
         ),
       ],

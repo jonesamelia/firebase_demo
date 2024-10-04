@@ -7,7 +7,8 @@ enum MessageColor{
   green(Colors.green),
   blue(Colors.blue),
   pink(Colors.pink),
-  purple(Colors.purple);
+  purple(Colors.purple),
+  black(Colors.black);
 
   const MessageColor(this.rgbcolor);
     final Color rgbcolor;

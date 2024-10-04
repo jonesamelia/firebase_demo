@@ -106,7 +106,7 @@ class ApplicationState extends ChangeNotifier {
   }
 
 
-  Future<DocumentReference> addMessageToGuestBook(String message) {
+  Future<DocumentReference> addMessageToGuestBook(String message, Color c) {
     if (!_loggedIn) {
       throw Exception('Must be logged in');
     }
@@ -118,7 +118,7 @@ class ApplicationState extends ChangeNotifier {
       'timestamp': DateTime.now().millisecondsSinceEpoch,
       'name': FirebaseAuth.instance.currentUser!.displayName,
       'userId': FirebaseAuth.instance.currentUser!.uid,
-      'color': Colors.purple.value.toString(),
+      'color': c.value.toString(),
     });
   }
 }
